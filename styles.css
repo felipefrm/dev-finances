@@ -5,6 +5,7 @@
   --green: #49aa26;
   --light-green: #3dd705;
   --red: #e92929;
+  --dark-red: #aa2626;
 }
 
 * {
@@ -148,9 +149,18 @@ header {
 }
 
 .card.total {
-  background: var(--green);
+  /* background: var(--green); */
   color: white;
 }
+
+.card.total.positive {
+  background: var(--green);
+}
+
+.card.total.negative {
+  background: var(--dark-red);
+}
+
 
 /* TABLE */
 #transaction {
