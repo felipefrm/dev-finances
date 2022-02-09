@@ -123,7 +123,6 @@ const DOM = {
 
   loadThemeImage(isDark) {
     const switcher = document.getElementById("theme-mode");
-    console.log(isDark);
     if (isDark == true) {
       switcher.setAttribute("src", "./assets/moon.svg");
     } else {
@@ -156,7 +155,6 @@ const Form = {
   },
 
   validateField() {
-    console.log(Form.getValues());
     const { description, amount, date } = Form.getValues();
 
     if (
@@ -226,7 +224,9 @@ const App = {
   init() {
     Theme.load();
 
-    Transaction.all.forEach(DOM.addTransaction);
+    Transaction.all.forEach((transaction, index) => {
+      DOM.addTransaction(transaction, index)
+    });
 
     DOM.updateBalance();
 

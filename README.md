@@ -7,7 +7,7 @@
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#-licença">Licença</a>
 </p>
 
 ## 💰 Projeto
@@ -30,24 +30,24 @@ A visualização do site pode ser feita em dois modos: modo claro e modo escuro.
 ### ☀️ Modo Claro
 
 #### - Página principal
-<img alt="dev.finances" title="dev.finances" src=".github/home-lightmode.png" width="80%"/>
+<img alt="dev.finances" title="dev.finances" src=".github/home-lightmode.png"/>
 
 <br>
 
 #### - Modal de cadastro de transação
-<img alt="dev.finances" title="dev.finances" src=".github/modal-lightmode.png" width="80%"/>
+<img alt="dev.finances" title="dev.finances" src=".github/modal-lightmode.png"/>
 
 <br>
 
 ### 🌙 Modo Escuro
 
 #### - Página principal
-<img alt="dev.finances" title="dev.finances" src=".github/home-darkmode.png" width="80%"/>
+<img alt="dev.finances" title="dev.finances" src=".github/home-darkmode.png"/>
 
 <br>
 
 #### - Modal de cadastro de transação
-<img alt="dev.finances" title="dev.finances" src=".github/modal-darkmode.png" width="80%"/>
+<img alt="dev.finances" title="dev.finances" src=".github/modal-darkmode.png"/>
 
 
 ## 🔖 Layout
