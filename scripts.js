@@ -4,21 +4,33 @@ const Modal = {
   },
 };
 
-const Storage = {
-  get() {
-    return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
+const Theme = {
+  load() {
+    const isDark = Storage.get("dev.finances:isDark");
+    DOM.loadColorPalette(isDark);
+    DOM.loadThemeImage(isDark);
   },
 
-  set(transactions) {
-    localStorage.setItem(
-      "dev.finances:transactions",
-      JSON.stringify(transactions)
-    );
+  switch() {
+    const isDark = Storage.get("dev.finances:isDark");
+    DOM.loadColorPalette(!isDark);
+    DOM.loadThemeImage(!isDark);
+    Storage.set("dev.finances:isDark", !isDark);
+  },
+};
+
+const Storage = {
+  get(key) {
+    return JSON.parse(localStorage.getItem(key)) || false;
+  },
+
+  set(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
   },
 };
 
 const Transaction = {
-  all: Storage.get(),
+  all: Storage.get("dev.finances:transactions"),
 
   add(transaction) {
     Transaction.all.push(transaction);
@@ -95,20 +107,39 @@ const DOM = {
       Transaction.total()
     );
 
-    DOM.updateTotalCardColor()
-  }, 
+    DOM.updateTotalCardColor();
+  },
 
   updateTotalCardColor() {
-    const totalCard = document.querySelector(".card.total")
+    const totalCard = document.querySelector(".card.total");
     if (Transaction.total() >= 0) {
-      totalCard.classList.add('positive')
-      totalCard.classList.remove('negative')
-    } 
-    else {
-      totalCard.classList.add('negative')
-      totalCard.classList.remove('positive')
+      totalCard.classList.add("positive");
+      totalCard.classList.remove("negative");
+    } else {
+      totalCard.classList.add("negative");
+      totalCard.classList.remove("positive");
     }
-  }
+  },
+
+  loadThemeImage(isDark) {
+    const switcher = document.getElementById("theme-mode");
+    console.log(isDark);
+    if (isDark == true) {
+      switcher.setAttribute("src", "./assets/moon.svg");
+    } else {
+      switcher.setAttribute("src", "./assets/sun.svg");
+    }
+  },
+
+  loadColorPalette(isDark) {
+    const body = document.querySelector("body");
+
+    if (isDark == true) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  },
 };
 
 const Form = {
@@ -125,10 +156,14 @@ const Form = {
   },
 
   validateField() {
-    console.log(Form.getValues())
+    console.log(Form.getValues());
     const { description, amount, date } = Form.getValues();
 
-    if (description.trim() === "" || amount.trim() === "" || date.trim() === "") {
+    if (
+      description.trim() === "" ||
+      amount.trim() === "" ||
+      date.trim() === ""
+    ) {
       throw new Error("Por favor, preencha todos os campos.");
     }
   },
@@ -178,7 +213,7 @@ const Utils = {
   },
 
   formatAmount(value) {
-    return Number(value) * 100;
+    return Math.round(Number(value) * 100);
   },
 
   formatDate(date) {
@@ -189,11 +224,13 @@ const Utils = {
 
 const App = {
   init() {
+    Theme.load();
+
     Transaction.all.forEach(DOM.addTransaction);
 
     DOM.updateBalance();
 
-    Storage.set(Transaction.all);
+    Storage.set("dev.finances:transactions", Transaction.all);
   },
 
   reload() {

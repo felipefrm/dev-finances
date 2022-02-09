@@ -1,11 +1,23 @@
 /* GLOBAL */
 
 :root {
-  --dark-blue: #363f5f;
+  /* --dark-blue: #363f5f; */
   --green: #49aa26;
   --light-green: #3dd705;
   --red: #e92929;
   --dark-red: #aa2626;
+
+  --card: #ffffff;
+  --header: #2d4a22;
+  --body: #f0f2f5;
+  --font: #363f5f;
+}
+
+.dark {
+  --card: #2d2d2d;
+  --header: #0f0f0f;
+  --body: #191919;
+  --font: #ffffff;
 }
 
 * {
@@ -19,8 +31,9 @@ html {
 }
 
 body {
-  background: #f0f2f5;
+  background: var(--body);
   font-family: "Poppins", sans-serif;
+  transition: all 0.5s;
 }
 
 .sr-only {
@@ -41,6 +54,26 @@ body {
 }
 
 /* LINKS AND BUTTONS */
+
+.links {
+  margin-top: 0.4rem;
+}
+
+.links a {
+  margin: 0 0.4rem;
+}
+
+.links a svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  stroke: var(--font);
+  transition: all 0.5s;
+}
+
+.links a:hover svg {
+  stroke: var(--green);
+}
+
 a {
   color: var(--green);
   text-decoration: none;
@@ -99,12 +132,13 @@ h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
   color: var(--dark-blue);
+  color: var(--font);
   font-weight: normal;
 }
 
 /* HEADER */
 header {
-  background: #2d4a22;
+  background: var(--header);
   padding: 2rem 0 10rem;
   text-align: center;
 }
@@ -114,23 +148,25 @@ header {
   font-weight: 100;
 }
 
+#theme-mode {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
 /* BALANCE */
 #balance {
   margin-top: -8rem;
 }
 
-#balance h2 {
-  color: white;
-  margin-top: 0;
-}
-
 /* CARDS */
 .card {
-  background: white;
+  background: var(--card);
   padding: 1.5rem 2rem;
   border-radius: 0.25rem;
   margin-bottom: 2rem;
   color: var(--dark-blue);
+  color: var(--font);
 }
 
 .card h3 {
@@ -161,7 +197,6 @@ header {
   background: var(--dark-red);
 }
 
-
 /* TABLE */
 #transaction {
   display: block;
@@ -172,7 +207,7 @@ header {
 #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
-  color: #4e5a8a;
+  color: var(--font);
 }
 
 #data-table thead tr th:first-child,
@@ -186,19 +221,20 @@ header {
 }
 
 #data-table th {
-  background: white;
+  background: var(--card);
   font-weight: normal;
   padding: 1rem 2rem;
   text-align: left;
 }
 
 #data-table td {
-  background: white;
+  background: var(--card);
   padding: 1rem 2rem;
 }
 
 #data-table td.description {
-  color: var(--dark-blue);
+  /* color: var(--dark-blue); */
+  color: var(--font);
 }
 
 #data-table td.income {
@@ -243,7 +279,7 @@ header {
 }
 
 .modal {
-  background: #f0f2f5;
+  background: var(--body);
   padding: 2.4rem;
   position: relative;
   z-index: 1;
@@ -265,6 +301,9 @@ header {
   padding: 0.8rem;
 
   width: 100%;
+
+  color: var(--font);
+  background: var(--card);
 }
 
 .input-group {
@@ -273,6 +312,7 @@ header {
 
 .input-group .help {
   opacity: 0.4;
+  color: var(--font);
 }
 
 .input-group.actions {
@@ -291,7 +331,8 @@ header {
 footer {
   text-align: center;
   padding: 4rem 0 2rem;
-  color: var(--dark-blue);
+  /* color: var(--dark-blue); */
+  color: var(--font);
   opacity: 0.6;
 }
 
